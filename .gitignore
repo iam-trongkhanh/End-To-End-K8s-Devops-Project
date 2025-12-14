@@ -1,0 +1,31 @@
+# Terraform
+.terraform/
+.terraform.lock.hcl
+terraform.tfstate
+terraform.tfstate.backup
+*.tfvars.backup
+*.tfplan
+crash.log
+override.tf
+override.tf.json
+*_override.tf
+*_override.tf.json
+
+# Local explanation files (không push lên GitHub)
+DYNAMODB_EXPLANATION.md
+*.local.md
+*.explanation.md
+
+# IDE
+.idea/
+.vscode/
+*.swp
+*.swo
+*~
+
+# OS
+.DS_Store
+Thumbs.db
+example/
+VARIABLES_TO_CHANGE.md
+DYNAMODB_EXPLANATION.md

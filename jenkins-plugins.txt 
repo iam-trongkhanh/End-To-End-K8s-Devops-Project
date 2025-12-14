@@ -1,3 +1,4 @@
 aws-credentials
 terraform
 pipeline-stage-view
+pipeline: aws

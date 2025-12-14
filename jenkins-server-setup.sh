@@ -66,3 +66,10 @@ mv /tmp/eksctl /usr/local/bin
 # -------------------------
 curl -LO "https://dl.k8s.io/release/$(curl -L -s https://dl.k8s.io/release/stable.txt)/bin/linux/amd64/kubectl"
 install -o root -g root -m 0755 kubectl /usr/local/bin/kubectl
+
+# -------------------------
+# Run sonarqube scan
+docker run -d \
+  --name sonarqube \
+  -p 9000:9000 \
+  sonarqube:community
