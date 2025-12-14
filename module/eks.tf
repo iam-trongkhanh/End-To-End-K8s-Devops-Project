@@ -37,7 +37,8 @@ resource "aws_eks_addon" "eks-addons" {
   for_each      = { for idx, addon in var.addons : idx => addon }
   cluster_name  = aws_eks_cluster.eks[0].name
   addon_name    = each.value.name
-  addon_version = each.value.version
+  # Version is optional - if not specified or empty, AWS will auto-select latest compatible version
+  addon_version = each.value.version != "" ? each.value.version : null
 
   depends_on = [
     aws_eks_node_group.ondemand-node,

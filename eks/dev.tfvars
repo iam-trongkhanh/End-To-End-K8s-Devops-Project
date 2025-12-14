@@ -40,6 +40,13 @@ max_capacity_on_demand     = "5"
 desired_capacity_spot      = "1"
 min_capacity_spot          = "1"
 max_capacity_spot          = "10"
+# ============================================
+# EKS ADDONS - VERSIONS FOR EKS 1.30
+# ============================================
+# If addon versions fail, you can:
+# 1. Remove version to let AWS auto-select latest compatible version
+# 2. Check available versions: aws eks describe-addon-versions --addon-name <name> --kubernetes-version 1.30
+# ============================================
 addons = [
   {
     name    = "vpc-cni"
@@ -47,11 +54,11 @@ addons = [
   },
   {
     name    = "coredns"
-    version = "v1.12.2-eksbuild.4"
+    version = "v1.14.1-eksbuild.1"  # Updated for EKS 1.30 compatibility
   },
   {
     name    = "kube-proxy"
-    version = "v1.30.0-eksbuild.1"
+    version = "v1.30.1-eksbuild.1"  # Updated for EKS 1.30 compatibility
   },
   {
     name    = "aws-ebs-csi-driver"
