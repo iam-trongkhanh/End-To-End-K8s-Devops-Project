@@ -26,7 +26,7 @@ provider "aws" {
 
 # S3 bucket cho Terraform state
 resource "aws_s3_bucket" "terraform_state" {
-  bucket = "KhanhhocdevopsS3bucket"
+  bucket = "khanhhocdevops-s3-bucket"
 
   tags = {
     Name        = "Terraform State Bucket"

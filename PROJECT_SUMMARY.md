@@ -9,7 +9,7 @@ The project has been fully recreated based on the example project with your info
 ```
 EKS-Cluster/
 ├── eks/                          # ✅ Terraform configuration for EKS
-│   ├── backend.tf               # ✅ S3: KhanhhocdevopsS3bucket, DynamoDB: terraform-state-lock
+│   ├── backend.tf               # ✅ S3: khanhhocdevops-s3-bucket, DynamoDB: terraform-state-lock
 │   ├── main.tf                  # ✅ Organization: trongkhanh
 │   ├── variables.tf             # ✅ Complete variables
 │   └── dev.tfvars               # ✅ Region: ap-southeast-2, VPC config
@@ -35,7 +35,7 @@ EKS-Cluster/
 | Item                       | Value                                               |
 | -------------------------- | --------------------------------------------------- |
 | **AWS Region**             | `ap-southeast-2` (Sydney)                           |
-| **S3 Bucket**              | `KhanhhocdevopsS3bucket`                            |
+| **S3 Bucket**              | `khanhhocdevops-s3-bucket`                          |
 | **DynamoDB Table**         | `terraform-state-lock`                              |
 | **Organization**           | `trongkhanh`                                        |
 | **GitHub Repo**            | `https://github.com/iam-trongkhanh/EKS-Cluster.git` |
@@ -88,7 +88,7 @@ Or see instructions in `README_SETUP.md`
 
 To ensure everything works:
 
-1. ✅ Verify S3 bucket exists: `KhanhhocdevopsS3bucket`
+1. ✅ Verify S3 bucket exists: `khanhhocdevops-s3-bucket`
 2. ✅ Verify DynamoDB table exists: `terraform-state-lock`
 3. ✅ Verify Jenkins credentials ID: `aws-creds`
 4. ✅ Verify GitHub repo and branch: `main`

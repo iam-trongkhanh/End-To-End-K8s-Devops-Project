@@ -15,7 +15,7 @@ terraform {
     }
   }
   backend "s3" {
-    bucket         = "KhanhhocdevopsS3bucket"
+    bucket         = "khanhhocdevops-s3-bucket"
     region         = "ap-southeast-2"
     key            = "eks/terraform.tfstate"
     dynamodb_table = "terraform-state-lock"

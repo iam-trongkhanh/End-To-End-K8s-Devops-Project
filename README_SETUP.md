@@ -46,13 +46,13 @@ terraform apply
 ```bash
 # Create S3 bucket
 aws s3api create-bucket \
-    --bucket KhanhhocdevopsS3bucket \
+    --bucket khanhhocdevops-s3-bucket \
     --region ap-southeast-2 \
     --create-bucket-configuration LocationConstraint=ap-southeast-2
 
 # Enable versioning
 aws s3api put-bucket-versioning \
-    --bucket KhanhhocdevopsS3bucket \
+    --bucket khanhhocdevops-s3-bucket \
     --versioning-configuration Status=Enabled
 
 # Create DynamoDB table

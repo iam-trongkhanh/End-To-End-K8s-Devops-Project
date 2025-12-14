@@ -5,12 +5,15 @@
 ### Error 1: S3 Bucket Not Found
 
 **Error message:**
+
 ```
-Error: error loading state: bucket "KhanhhocdevopsS3bucket" does not exist
+Error: error loading state: bucket "khanhhocdevops-s3-bucket" does not exist
 ```
 
 **Solution:**
+
 1. Create S3 bucket first using `setup-backend.tf`:
+
    ```bash
    terraform init
    terraform apply
@@ -19,7 +22,7 @@ Error: error loading state: bucket "KhanhhocdevopsS3bucket" does not exist
 2. Or create manually:
    ```bash
    aws s3api create-bucket \
-       --bucket KhanhhocdevopsS3bucket \
+       --bucket khanhhocdevops-s3-bucket \
        --region ap-southeast-2 \
        --create-bucket-configuration LocationConstraint=ap-southeast-2
    ```
@@ -27,12 +30,15 @@ Error: error loading state: bucket "KhanhhocdevopsS3bucket" does not exist
 ### Error 2: DynamoDB Table Not Found
 
 **Error message:**
+
 ```
 Error: error loading state: table "terraform-state-lock" does not exist
 ```
 
 **Solution:**
+
 1. Create DynamoDB table using `setup-backend.tf`:
+
    ```bash
    terraform apply
    ```
@@ -50,17 +56,21 @@ Error: error loading state: table "terraform-state-lock" does not exist
 ### Error 3: Access Denied to S3/DynamoDB
 
 **Error message:**
+
 ```
 Error: AccessDenied: Access Denied
 ```
 
 **Solution:**
+
 1. Check AWS credentials in Jenkins:
+
    - Go to: Manage Jenkins → Credentials → System → Global credentials
    - Verify credentials ID: `creds-aws`
    - Verify Access Key and Secret Key are correct
 
 2. Check IAM permissions:
+
    - IAM user/role needs:
      - `s3:GetObject`, `s3:PutObject`, `s3:ListBucket` on S3 bucket
      - `dynamodb:GetItem`, `dynamodb:PutItem`, `dynamodb:DeleteItem` on DynamoDB table
@@ -72,11 +82,7 @@ Error: AccessDenied: Access Denied
      "Statement": [
        {
          "Effect": "Allow",
-         "Action": [
-           "s3:ListBucket",
-           "s3:GetObject",
-           "s3:PutObject"
-         ],
+         "Action": ["s3:ListBucket", "s3:GetObject", "s3:PutObject"],
          "Resource": [
            "arn:aws:s3:::KhanhhocdevopsS3bucket",
            "arn:aws:s3:::KhanhhocdevopsS3bucket/*"
@@ -98,12 +104,15 @@ Error: AccessDenied: Access Denied
 ### Error 4: Terraform Not Found
 
 **Error message:**
+
 ```
 terraform: command not found
 ```
 
 **Solution:**
+
 1. Install Terraform on Jenkins server:
+
    ```bash
    # On Jenkins server (Ubuntu/Debian)
    wget -O- https://apt.releases.hashicorp.com/gpg | sudo gpg --dearmor -o /usr/share/keyrings/hashicorp-archive-keyring.gpg
@@ -117,11 +126,13 @@ terraform: command not found
 ### Error 5: Region Mismatch
 
 **Error message:**
+
 ```
 Error: error loading state: RequestError: send request failed
 ```
 
 **Solution:**
+
 1. Verify region in `eks/backend.tf` matches your AWS region
 2. Verify region in Jenkinsfile matches: `region: 'ap-southeast-2'`
 3. Verify S3 bucket and DynamoDB table are in the same region
@@ -129,12 +140,15 @@ Error: error loading state: RequestError: send request failed
 ### Error 6: Backend Configuration Changed
 
 **Error message:**
+
 ```
 Error: Backend configuration changed
 ```
 
 **Solution:**
+
 1. If you changed backend configuration, you need to migrate:
+
    ```bash
    terraform init -migrate-state
    ```
@@ -188,4 +202,3 @@ aws sts get-caller-identity
 ---
 
 **After fixing, try running the pipeline again!**
-
